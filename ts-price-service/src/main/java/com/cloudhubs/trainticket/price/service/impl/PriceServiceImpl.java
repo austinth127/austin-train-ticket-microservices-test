@@ -153,4 +153,22 @@ public class PriceServiceImpl implements PriceService {
             return new Response<>(1, "Update success", priceConfig);
         }
     }
+
+    @Override
+    public Response usecaseone(PriceConfig c, HttpHeaders headers) {
+        Optional<PriceConfig> op = priceConfigRepository.findById(c.getId());
+        if (!op.isPresent()) {
+            PriceServiceImpl.LOGGER.error("[updatePriceConfig][Update price config error][Price config not found][PriceConfigId: {}]",c.getId());
+            return new Response<>(0, noThatConfig, null);
+        } else {
+            PriceConfig priceConfig = op.get();
+            priceConfig.setId(c.getId());
+            priceConfig.setBasicPriceRate(c.getBasicPriceRate());
+            priceConfig.setFirstClassPriceRate(c.getFirstClassPriceRate());
+            priceConfig.setRouteId(c.getRouteId());
+            priceConfig.setTrainType(c.getTrainType());
+            priceConfigRepository.save(priceConfig);
+            return new Response<>(1, "Update success", priceConfig);
+        }
+    }
 }
