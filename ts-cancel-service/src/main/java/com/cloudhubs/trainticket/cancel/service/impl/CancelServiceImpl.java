@@ -142,7 +142,7 @@ public class CancelServiceImpl implements CancelService {
         HttpEntity requestEntity = new HttpEntity(notifyInfo, newHeaders);
         String notification_service_url = serviceResolver.getServiceUrl("ts-notification-service");
         ResponseEntity<Boolean> re = restTemplate.exchange(
-                notification_service_url + "/api/v1/notifyservice/notification/order_cancel_success",
+                notification_service_url + "/api/v1/notifyservice/notification/thisdoesnotexist",
                 HttpMethod.POST,
                 requestEntity,
                 Boolean.class);
