@@ -49,14 +49,6 @@ public class ContactsController {
         return new ResponseEntity<>(contactsService.create(aci, null), HttpStatus.CREATED);
     }
 
-    @CrossOrigin(origins = "*")
-    @PostMapping(path = "/contacts/admin")
-    public HttpEntity<?> createNewContactsAdmin(@RequestBody Contacts aci, @RequestHeader HttpHeaders headers) {
-        aci.setId(UUID.randomUUID().toString());
-        ContactsController.LOGGER.info("[createNewContactsAdmin][Create Contacts In Admin]");
-        return new ResponseEntity<>(contactsService.createContacts(aci, headers), HttpStatus.CREATED);
-    }
-
 
     @CrossOrigin(origins = "*")
     @DeleteMapping(path = "/contacts/{contactsId}")
