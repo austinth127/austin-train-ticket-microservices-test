@@ -71,9 +71,4 @@ public class PriceController {
         return ok(service.updatePriceConfig(info, headers));
     }
 
-    @PutMapping(value = "/uc1")
-    public HttpEntity usecaseone(@RequestBody PriceConfig info, @RequestHeader HttpHeaders headers) {
-        PriceController.LOGGER.info("[updatePriceConfig][Update price][PriceConfigId: {}]",info.getId());
-        return ok(service.usecaseone(info, headers));
-    }
 }
