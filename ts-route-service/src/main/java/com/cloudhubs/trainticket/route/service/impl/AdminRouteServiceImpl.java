@@ -52,6 +52,23 @@ public class AdminRouteServiceImpl implements AdminRouteService {
     }
 
     @Override
+    public Response useCaseFour(HttpHeaders headers) {
+
+        HttpEntity requestEntity = new HttpEntity(null);
+        String route_service_url = serviceResolver.getServiceUrl("ts-route-service");
+        ResponseEntity<Response> re = restTemplate.exchange(
+                route_service_url + "/api/v1/stationservice/usecasefour",
+                HttpMethod.GET,
+                requestEntity,
+                Response.class);
+        if (re.getStatusCode() != HttpStatus.ACCEPTED) {
+            logger.error("[getAllRoutes][receive response][Get routes error][response code: {}]", re.getStatusCodeValue());
+        }
+        return re.getBody();
+
+    }
+
+    @Override
     public Response createAndModifyRoute(RouteInfoCommon request, HttpHeaders headers) {
         // check stations
         String start = request.getStartStation();

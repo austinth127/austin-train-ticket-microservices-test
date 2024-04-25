@@ -30,6 +30,11 @@ public class StationController {
         return "Welcome to [ Station Service ] !";
     }
 
+    @GetMapping(path = "/usecasefour")
+    public String usecasefour(@RequestHeader HttpHeaders headers) {
+        return "Welcome to [ Station Service ] !";
+    }
+
     @GetMapping(value = "/stations")
     public HttpEntity query(@RequestHeader HttpHeaders headers) {
         return ok(stationService.query(headers));
