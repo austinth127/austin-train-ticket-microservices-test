@@ -84,7 +84,7 @@ public class AdminOrderServiceImpl implements AdminOrderService {
     }
 
     @Override
-    public Response deleteOrder(String orderId, String trainNumber, HttpHeaders headers) {
+    public Response renamedMethod(String orderId, String trainNumber, HttpHeaders headers, String newParam1) {
         Response deleteOrderResult;
         if (trainNumber.startsWith("G") || trainNumber.startsWith("D")) {
             AdminOrderServiceImpl.LOGGER.info("[deleteOrder][Delete Order][orderId: {}, trainNumber: {}]", orderId, trainNumber);
