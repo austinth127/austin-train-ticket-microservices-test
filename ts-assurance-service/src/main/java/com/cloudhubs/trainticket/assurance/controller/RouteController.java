@@ -51,10 +51,11 @@ public class RouteController {
     @PostMapping(path = "/routes/byIds")
     public HttpEntity queryByIds(@RequestBody List<String> routeIds, @RequestHeader HttpHeaders headers) {
         RouteController.LOGGER.info("[getRouteById][Query route by id][RouteId: {}]", routeIds);
+        System.out.println("I'm modified!");
         return ok(routeService.getRouteByIds(routeIds, headers));
     }
 
-    @GetMapping(path = "/routes")
+    @DeleteMapping(path = "/routes")
     public HttpEntity queryAll(@RequestHeader HttpHeaders headers) {
         RouteController.LOGGER.info("[getAllRoutes][Query all routes]");
         return ok(routeService.getAllRoutes(headers));
